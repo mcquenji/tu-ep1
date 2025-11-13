@@ -4,8 +4,14 @@
 public class Aufgabe4 {
 
     private static String appendAllSignsLeft(String text, char character) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Methode
-        return null; //Zeile kann geändert oder entfernt werden.
+        if (text.isEmpty())
+            return "";
+
+        final var lastChar = text.charAt(text.length() - 1);
+
+        final var prefix = (lastChar == character) ? character + "" : "";
+
+        return prefix + appendAllSignsLeft(text.substring(0, text.length() - 1), character) + lastChar;
     }
 
     public static void main(String[] args) {
@@ -17,14 +23,14 @@ public class Aufgabe4 {
         System.out.println(appendAllSignsLeft("ji)o3ie6pk(2i", 'i'));
         System.out.println(appendAllSignsLeft("nothing", 'x'));
 
-        //DIE NACHFOLGENDEN ZEILEN SIND ZUM TESTEN DER METHODE.
-        //**********************************************************************
+        // DIE NACHFOLGENDEN ZEILEN SIND ZUM TESTEN DER METHODE.
+        // **********************************************************************
         assert (appendAllSignsLeft("az3kj", 'z').equals("zaz3kj"));
-        assert (appendAllSignsLeft("kjdn{nd8xngs+d#k",'n').equals("nnnkjdn{nd8xngs+d#k"));
+        assert (appendAllSignsLeft("kjdn{nd8xngs+d#k", 'n').equals("nnnkjdn{nd8xngs+d#k"));
         assert (appendAllSignsLeft("", 'e').equals(""));
         assert (appendAllSignsLeft("4", '4').equals("44"));
         assert (appendAllSignsLeft("ji)o3ie6pk(2i", 'i').equals("iiiji)o3ie6pk(2i"));
         assert (appendAllSignsLeft("nothing", 'x').equals("nothing"));
-        //**********************************************************************
+        // **********************************************************************
     }
 }
