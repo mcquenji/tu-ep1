@@ -16,6 +16,3 @@ public class Aufgabe5 {
         // TODO: Implementieren Sie hier Ihre Lösung für die Angabe
     }
 }
-
-
-
