@@ -7,12 +7,50 @@ import codedraw.*;
 import java.awt.*;
 
 public class Aufgabe5 {
+    static final int SIZE = 512;
+    static final int INITIAL_SQUARE_SIZE = SIZE / 2;
+    static final Color FILL = Color.YELLOW;
+    static final Color STROKE = Color.BLACK;
 
     private static void drawRecursiveSquares(CodeDraw myDrawObj, int x, int y, int s) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Methode
+        if (s < 4)
+            return;
+
+        // offset required to center the square
+        final int offset = s / 2;
+
+        // coordinate of the left side
+        final int left = x - offset;
+
+        // coordinate of the top side
+        final int up = y - offset;
+
+        // coordinate of the lower side
+        final int down = y + offset;
+
+        // coordinate of the right side
+        final int right = x + offset;
+
+        drawRecursiveSquares(myDrawObj, left, up, offset);
+        drawRecursiveSquares(myDrawObj, left, down, offset);
+        drawRecursiveSquares(myDrawObj, right, up, offset);
+        drawRecursiveSquares(myDrawObj, right, down, offset);
+
+        myDrawObj.setColor(FILL);
+        myDrawObj.fillSquare(x - offset, y - offset, s);
+        myDrawObj.setColor(STROKE);
+        myDrawObj.drawSquare(x - offset, y - offset, s);
+        myDrawObj.setColor(Color.red);
     }
 
     public static void main(String[] args) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Angabe
+        CodeDraw canvas = new CodeDraw(SIZE, SIZE);
+        canvas.setTitle("Fortnite");
+        canvas.setCanvasPositionX(50);
+        canvas.setCanvasPositionY(50);
+
+        drawRecursiveSquares(canvas, INITIAL_SQUARE_SIZE, INITIAL_SQUARE_SIZE, INITIAL_SQUARE_SIZE);
+
+        canvas.show();
     }
 }
