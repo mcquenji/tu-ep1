@@ -9,8 +9,6 @@ import java.awt.*;
 public class Aufgabe5 {
     static final int SIZE = 512;
     static final int INITIAL_SQUARE_SIZE = SIZE / 2;
-    static final Color FILL = Color.YELLOW;
-    static final Color STROKE = Color.BLACK;
 
     private static void drawRecursiveSquares(CodeDraw myDrawObj, int x, int y, int s) {
         if (s < 4)
@@ -36,9 +34,12 @@ public class Aufgabe5 {
         drawRecursiveSquares(myDrawObj, right, up, offset);
         drawRecursiveSquares(myDrawObj, right, down, offset);
 
-        myDrawObj.setColor(FILL);
+        final Color fill = Color.YELLOW;
+        final Color stroke = Color.BLACK;
+
+        myDrawObj.setColor(fill);
         myDrawObj.fillSquare(x - offset, y - offset, s);
-        myDrawObj.setColor(STROKE);
+        myDrawObj.setColor(stroke);
         myDrawObj.drawSquare(x - offset, y - offset, s);
         myDrawObj.setColor(Color.red);
     }
