@@ -145,9 +145,9 @@ public class Aufgabe6 {
 
             if (draw) {
                 // draw and advance iteration
-                myDrawObj.setColor(fill);
+                myDrawObj.setColor(FILL);
                 myDrawObj.fillSquare(x - offset, y - offset, s);
-                myDrawObj.setColor(stroke);
+                myDrawObj.setColor(STROKE);
                 myDrawObj.drawSquare(x - offset, y - offset, s);
 
                 continue;
@@ -192,8 +192,8 @@ public class Aufgabe6 {
         }
     }
 
-    static final Color fill = Color.YELLOW;
-    static final Color stroke = Color.BLACK;
+    static final Color FILL = Color.YELLOW;
+    static final Color STROKE = Color.BLACK;
     static final int MIN_SIZE = 4;
 
     public static void main(String[] args) {
@@ -201,26 +201,26 @@ public class Aufgabe6 {
         int pixelWidth = 512;
         int pixelHeight = 512;
 
-        // CodeDraw myDrawObjIterGLM45v = new CodeDraw(pixelWidth, pixelHeight);
-        // myDrawObjIterGLM45v.setTitle("Output Iterative Method -> GLM 4.5v");
-        // myDrawObjIterGLM45v.setCanvasPositionX(50);
-        // myDrawObjIterGLM45v.setCanvasPositionY(50);
+        CodeDraw myDrawObjIterGLM45v = new CodeDraw(pixelWidth, pixelHeight);
+        myDrawObjIterGLM45v.setTitle("Output Iterative Method -> GLM 4.5v");
+        myDrawObjIterGLM45v.setCanvasPositionX(50);
+        myDrawObjIterGLM45v.setCanvasPositionY(50);
 
-        // CodeDraw myDrawObjIterChatGPT5 = new CodeDraw(pixelWidth, pixelHeight);
-        // myDrawObjIterChatGPT5.setTitle("Output Iterative Method -> ChatGPT 5");
-        // myDrawObjIterChatGPT5.setCanvasPositionX(600);
-        // myDrawObjIterChatGPT5.setCanvasPositionY(50);
+        CodeDraw myDrawObjIterChatGPT5 = new CodeDraw(pixelWidth, pixelHeight);
+        myDrawObjIterChatGPT5.setTitle("Output Iterative Method -> ChatGPT 5");
+        myDrawObjIterChatGPT5.setCanvasPositionX(600);
+        myDrawObjIterChatGPT5.setCanvasPositionY(50);
 
         CodeDraw myDrawObjIter = new CodeDraw(pixelWidth, pixelHeight);
         myDrawObjIter.setTitle("Output Iterative Method");
         myDrawObjIter.setCanvasPositionX(1150);
         myDrawObjIter.setCanvasPositionY(50);
 
-        // drawIterativeSquaresGLM45v(myDrawObjIterGLM45v, pixelWidth);
-        // myDrawObjIterGLM45v.show();
+        drawIterativeSquaresGLM45v(myDrawObjIterGLM45v, pixelWidth);
+        myDrawObjIterGLM45v.show();
 
-        // drawIterativeSquaresChatGPT5(myDrawObjIterChatGPT5, pixelWidth);
-        // myDrawObjIterChatGPT5.show();
+        drawIterativeSquaresChatGPT5(myDrawObjIterChatGPT5, pixelWidth);
+        myDrawObjIterChatGPT5.show();
 
         drawIterativeSquares(myDrawObjIter, pixelWidth);
         myDrawObjIter.show();
