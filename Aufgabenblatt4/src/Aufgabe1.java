@@ -2,8 +2,6 @@
     Aufgabe 1) Code Analyse - Eindimensionale Arrays
 */
 
-import java.util.Arrays;
-
 public class Aufgabe1 {
 
     private static void printArray(int[] workArray) {
