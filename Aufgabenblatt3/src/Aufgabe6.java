@@ -105,7 +105,7 @@ public class Aufgabe6 {
         // n=0
         //
         // thus we can calculate the sum like this
-        // Sn = a × (r^n - 1)/(r - 1) => Sk = 1 × (4^k - 1)/3 <=> (4^k - 1)/3
+        // Sn = a × (r^n - 1)/(r - 1) => Sk = 1 × (4^(k - 1))/3 <=> (4^(k - 1))/3
         // but this would be exclusive so k would not be included thus k=k+1
         // => (4^(k+1) - 1)/3
         //
@@ -117,7 +117,7 @@ public class Aufgabe6 {
         int[] stackX = new int[maxStackSize];
         int[] stackY = new int[maxStackSize];
         int[] stackS = new int[maxStackSize];
-        // the stage of the stack at [top]. If true drawStage, expand stage otherwise
+        // the stage of the stack at [ptr]. If true drawStage, expand stage otherwise
         boolean[] drawStack = new boolean[maxStackSize];
 
         int ptr = 0;
