@@ -51,68 +51,48 @@ public class Aufgabe2 {
     public static void main(String[] args) {
 
         int[] array1 = { 0, 9, 9, 9, 9 };
-        int[] saneArray1 = Arrays.copyOf(array1, array1.length);
         int[] solution1 = { 0, 0, 0, 0, 0 };
-
-        replaceValues(array1, 10);
-        System.out.println(Arrays.toString(array1));
-        assert (Arrays.equals(array1, solution1));
+        test(array1, 10, solution1);
 
         int[] array2 = { 12, 12, 12 };
-        int[] saneArray2 = Arrays.copyOf(array2, array2.length);
         int[] solution2 = { 12, 12, 12 };
-        replaceValues(array2, 10);
-        System.out.println(Arrays.toString(array2));
-        assert (Arrays.equals(array2, solution2));
+        test(array2, 10, solution2);
 
         int[] array3 = { 0, 20, 100, 100 };
-        int[] saneArray3 = Arrays.copyOf(array3, array3.length);
         int[] solution3 = { 0, 0, 55, 55 };
-        replaceValues(array3, 50);
-        System.out.println(Arrays.toString(array3));
-        assert (Arrays.equals(array3, solution3));
+        test(array3, 50, solution3);
 
         // Warum auch immer die methode [replaceValues] werte die exakt 1 größer als
         // [threshhold] sind mit 0 ersetzt.
         int[] array4 = { 0, 50, 100, 100 };
-        int[] saneArray4 = Arrays.copyOf(array4, array4.length);
         int[] solution4 = { 0, 62, 62, 62 };
-        replaceValues(array4, 49);
-        System.out.println(Arrays.toString(array4));
-        assert (Arrays.equals(array4, solution4));
+        test(array4, 49, solution4);
 
         // Der durchschnitt wird falsch berechnet wegen dem +1 im summe und dem starten
         // der sum bei 1.
         // ebenso wird der erste wert im array nie ersetzt da die for schleife bei 1
         // startet
         int[] array5 = { 5, 15 };
-        int[] saneArray5 = Arrays.copyOf(array5, array5.length);
         int[] solution5 = { 0, 10 };
-        replaceValues(array5, 10);
-        System.out.println(Arrays.toString(array5));
-        assert (Arrays.equals(array5, solution5));
+        test(array5, 10, solution5);
 
-        System.out.println("/// SANE SOLUTION");
+    }
 
-        saneSolution(saneArray1, 10);
-        System.out.println(Arrays.toString(saneArray1));
-        assert (Arrays.equals(saneArray1, solution1));
+    private static void test(int[] input, int threshhold, int[] solution) {
+        int[] copy = Arrays.copyOf(input, input.length);
+        System.out.println("Testing: " + Arrays.toString(input) + "; Threshold: " + threshhold);
 
-        saneSolution(saneArray2, 10);
-        System.out.println(Arrays.toString(saneArray2));
-        assert (Arrays.equals(saneArray2, solution2));
+        replaceValues(input, threshhold);
+        saneSolution(copy, threshhold);
 
-        saneSolution(saneArray3, 50);
-        System.out.println(Arrays.toString(saneArray3));
-        assert (Arrays.equals(saneArray3, solution3));
+        final boolean insane = Arrays.equals(input, solution);
+        final boolean sane = Arrays.equals(copy, solution);
 
-        saneSolution(saneArray4, 49);
-        System.out.println(Arrays.toString(saneArray4));
-        assert (Arrays.equals(saneArray4, solution4));
+        final String soluString = Arrays.toString(solution);
+        System.out.println("Insane result: " + Arrays.toString(input) + (insane ? " == " : " != ") + soluString);
+        System.out.println("Sane result: " + Arrays.toString(copy) + (sane ? " == " : " != ") + soluString);
 
-        saneSolution(saneArray5, 10);
-        System.out.println(Arrays.toString(saneArray5));
-        assert (Arrays.equals(saneArray5, solution5));
-
+        assert insane;
+        assert sane;
     }
 }
